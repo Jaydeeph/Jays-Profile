@@ -1,0 +1,1077 @@
+/*--------------------------------------------------------------
+# General Styling & Variables
+--------------------------------------------------------------*/
+:root {
+  --primary-bg: #1e1e1e;
+  /* Dark background for the main body */
+  --secondary-bg: #2a2a2a;
+  /* Slightly lighter background for sections */
+  --text-light: #cccccc;
+  /* Light text color */
+  --text-white: #ffffff;
+  /* Pure white text */
+  --accent-color: #a8a8a8;
+  /* Accent color for highlights */
+  --sidebar-width: 280px;
+  /* Sidebar width */
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--text-light);
+  font-family: "Poppins", sans-serif;
+  /* Apply chosen font */
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--text-white);
+}
+
+/* Section Heading Style */
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 25px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.section-title h2::before {
+  content: "// ";
+  color: var(--accent-color);
+  /* Or a brighter color */
+}
+
+section {
+  padding: 80px 0;
+  overflow: hidden;
+  /* Important for AOS */
+}
+
+.section-bg {
+  background-color: var(--secondary-bg);
+  /* Use for sections needing a slightly different bg */
+}
+
+/*--------------------------------------------------------------
+# Sidebar Navigation
+--------------------------------------------------------------*/
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  z-index: 999;
+  transition: all 0.5s;
+  padding: 30px;
+  background-color: var(--secondary-bg);
+  overflow-y: auto;
+  border-right: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .logo {
+  margin-bottom: 30px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar .logo h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-white);
+  text-align: center;
+}
+
+.sidebar .nav-menu {
+  text-align: center;
+  padding-top: 100%;
+}
+
+.sidebar .nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .nav-menu li {
+  margin-bottom: 18px;
+}
+
+.sidebar .nav-menu a {
+  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 400;
+  transition: 0.3s;
+  display: inline-block;
+  /* Change from block to center text */
+  position: relative;
+  /* For potential future active indicators */
+}
+
+.sidebar .nav-menu a:hover,
+.sidebar .nav-menu .active>a {
+  color: var(--text-white);
+  font-weight: 600;
+  /* Highlight active link */
+}
+
+.social-links-sidebar {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 15px;
+  padding-top: 20px; 
+  flex-shrink: 0;
+}
+
+.social-links-sidebar a {
+  display: inline-block;
+  color: var(--text-light);
+  font-size: 18px;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+  line-height: 1;
+}
+.social-links-sidebar a:hover {
+  color: var(--text-white);
+}
+
+.sidebar .copyright {
+  font-size: 12px;
+  color: var(--accent-color);
+  text-align: center;
+  padding-top: 20px;
+  flex-shrink: 0;
+}
+
+/*--------------------------------------------------------------
+# Main Content Area
+--------------------------------------------------------------*/
+#main {
+  margin-left: var(--sidebar-width);
+  padding: var(--content-padding);
+  min-height: 100vh;
+}
+
+/*--------------------------------------------------------------
+# Home Section
+--------------------------------------------------------------*/
+#rotating-profile-image {
+  transition: opacity 0.6s ease-in-out;
+  /* Controls the fade speed */
+}
+
+#rotating-profile-image.fade-out {
+  opacity: 0;
+}
+
+#home {
+  min-height: 100vh;
+  /* Make home section fill viewport */
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* Needed for potential pseudo-elements */
+  padding-left: 0;
+  /* Override default section padding if needed */
+  padding-right: 0;
+}
+
+#home .container-fluid {
+  width: 100%;
+}
+
+#home h1 {
+  font-size: 3.5rem;
+  /* Adjust as needed */
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 20px 0;
+}
+
+#home .typed-cursor {
+  /* Style the typewriter cursor */
+  opacity: 1;
+  animation: blink 0.7s infinite;
+  color: var(--text-white);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#home .btn-view-portfolio {
+  background: var(--secondary-bg);
+  border: 1px solid var(--accent-color);
+  padding: 10px 30px;
+  color: var(--text-light);
+  border-radius: 4px;
+  transition: 0.3s;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+#home .btn-view-portfolio:hover {
+  background: var(--accent-color);
+  color: var(--primary-bg);
+  border-color: var(--accent-color);
+}
+
+#home .profile-image-wrapper {
+  position: relative;
+  /* Create the angled effect */
+  transform: perspective(1500px) rotateY(-10deg) rotateX(2deg);
+  transform-style: preserve-3d;
+  box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  /* Hide parts outside the rotated view */
+  max-width: 450px;
+  /* Limit image size */
+  margin: auto;
+  /* Center if needed */
+}
+
+#home .profile-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Optional: slight scale or inner transform if needed */
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about-item {
+  margin-bottom: 40px;
+}
+
+.about-item h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-white);
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.about-item h3::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--accent-color);
+  bottom: 0;
+  left: 0;
+}
+
+.personal-details ul,
+.interests ul,
+.awards ul {
+  list-style: none;
+  padding: 0;
+}
+
+.personal-details li,
+.interests li,
+.awards li {
+  margin-bottom: 10px;
+  display: flex;
+  /* For icon alignment */
+  align-items: center;
+  /* For icon alignment */
+}
+
+.personal-details strong {
+  color: var(--text-white);
+  margin-right: 10px;
+  min-width: 80px;
+  /* Align values */
+  display: inline-block;
+}
+
+.interests i,
+.awards i {
+  color: var(--accent-color);
+  /* Checkmark color */
+  margin-right: 8px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Wrapper to hold the two UL columns */
+.skills-two-column-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+/* Styling for each UL (each column) */
+.skill-list {
+  flex: 1;
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* Styling for individual skill items */
+.skill-list li {
+  color: var(--text-light);
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* The main container acting as the visible track */
+.progress {
+  height: 18px;
+  background-color: #151515;
+  border-radius: 9px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* The colored fill indicating the percentage */
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  background-color: #6c6c6c;
+  border-radius: 9px;
+  transition: width 1s ease-in-out;
+  z-index: 1;
+}
+
+/* The text (Skill Name + Value) layered on top */
+.skill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-white);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* The percentage value itself (no extra styling needed beyond flex) */
+.skill .val {
+  font-style: normal;
+  color: inherit;
+  /* Inherit color from .skill */
+}
+
+.btn-download-cv {
+  background: var(--secondary-bg);
+  border: 1px solid var(--accent-color);
+  padding: 10px 30px;
+  color: var(--text-light);
+  border-radius: 4px;
+  transition: 0.3s;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.btn-download-cv:hover {
+  background: var(--accent-color);
+  color: var(--primary-bg);
+  border-color: var(--accent-color);
+}
+
+.education-item,
+.experience-item {
+    padding: 20px;
+    /* background: transparent; */ /* Ensure no background */
+    border-radius: 5px;
+    margin-bottom: 25px; /* Slightly increase space between items */
+    position: relative;
+    /* border-left: none; */ /* Ensure no border */
+}
+
+/* Target the H4 within both item types */
+.education-item h4,
+.experience-item h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0; /* Remove bottom margin, space controlled by padding */
+    color: var(--text-white);
+    display: inline-block; /* Important for ::after positioning if needed, and width */
+    padding-bottom: 8px; /* Add space below the text for the line */
+}
+
+.education-item h4::after,
+.experience-item h4::after {
+    content: '';             /* Required for pseudo-elements */
+    display: block;          /* Make it behave like a block */
+    width: 40px;             /* SET THE DESIRED WIDTH of the underline */
+    height: 2px;             /* SET THE THICKNESS of the underline */
+    background-color: var(--accent-color); /* Use your accent color */
+    margin-top: 8px;         /* Space between H4 text and the underline */
+}
+/* --- End Added Rule --- */
+
+/* Keep date styles */
+.education-item .date,
+.experience-item .date {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 12px;
+    background: var(--primary-bg);
+    padding: 3px 8px;
+    border-radius: 3px;
+    color: var(--accent-color);
+}
+
+/* Adjust paragraph styles */
+.education-item p,
+.experience-item p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 0;
+    margin-top: 10px; /* Add space between the underline (from h4::after) and the description */
+}
+
+/* Fun Facts */
+.fun-fact-box {
+  text-align: center;
+  padding: 20px;
+  background: var(--secondary-bg);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  /* Space on smaller screens */
+}
+
+.fun-fact-box .count {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-white);
+  display: block;
+}
+
+.fun-fact-box p {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* Trusted Partners */
+.partner-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  filter: grayscale(100%);
+  /* Make logos grayscale */
+}
+
+.partner-logo img {
+  max-height: 40px;
+  /* Adjust as needed */
+  max-width: 100%;
+}
+
+.partner-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Specific styles for text-based logos if not using images */
+.partner-logo span {
+  color: var(--text-light);
+  /* Match text color */
+  transition: color 0.3s ease;
+}
+
+.partner-logo:hover span {
+  color: var(--text-white);
+  /* Brighter on hover */
+}
+
+.partner-logo i {
+  /* Style icons within text logos */
+  margin: 0 5px;
+  font-size: 1.5rem;
+  /* Adjust icon size */
+}
+
+/* Testimonials */
+.testimonial-item {
+  padding: 30px;
+  background: var(--secondary-bg);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.testimonial-item .quote-icon-left,
+.testimonial-item .quote-icon-right {
+  color: var(--accent-color);
+  font-size: 26px;
+  opacity: 0.4;
+}
+
+.testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  /* Adjust alignment */
+}
+
+.testimonial-item p {
+  font-style: italic;
+  margin: 0 0 20px 0;
+  color: var(--text-light);
+}
+
+.testimonial-item img {
+  width: 60px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 15px;
+}
+
+.testimonial-item h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  padding-top: 5px;
+  /* Align with image center */
+}
+
+.testimonial-item span {
+  font-size: 13px;
+  color: var(--accent-color);
+  display: block;
+}
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.service-box {
+  padding: 30px;
+  background: var(--secondary-bg);
+  border-radius: 8px;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+}
+
+.service-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-box .icon {
+  font-size: 36px;
+  color: var(--accent-color);
+  /* Icon color */
+  margin-bottom: 20px;
+  display: block;
+  /* Make icon block level */
+}
+
+.service-box h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0;
+    color: var(--text-white);
+    display: block;
+    padding-bottom: 8px;
+}
+
+.service-box h4::after {
+  content: '';
+  display: block;
+  width: 75%;
+  height: 2px;
+  background-color: var(--accent-color);
+  margin-top: 8px;
+}
+
+.service-box ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-top: 15px;
+}
+
+.service-box ul li {
+  padding-bottom: 5px;
+}
+
+/*--------------------------------------------------------------
+# Portfolio (Blog Style) Section
+--------------------------------------------------------------*/
+.portfolio-item {
+  margin-bottom: 30px;
+  /* Removed background and border-radius from item itself */
+}
+
+.portfolio-wrap {
+  background: var(--secondary-bg);
+  /* Background for the card */
+  border-radius: 5px;
+  /* Optional rounding */
+  overflow: hidden;
+  /* Ensure hover effect stays contained */
+  transition: box-shadow 0.3s ease-in-out;
+  display: block;
+  /* Make the wrap a block element */
+  height: 100%;
+  /* Ensure wrap takes full height of column */
+}
+
+.portfolio-wrap:hover {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  /* Add shadow on hover */
+}
+
+.portfolio-img {
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-img img {
+  width: 100%;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  /* Combine transitions */
+  filter: grayscale(100%);
+  /* Black and white effect */
+  display: block;
+  /* Remove extra space below image */
+}
+
+.portfolio-wrap:hover .portfolio-img img {
+  /* Target img hover via wrap */
+  transform: scale(1.1);
+  /* Zoom effect on hover */
+  filter: grayscale(0%);
+  /* Color on hover */
+}
+
+.portfolio-info {
+  padding: 20px 15px;
+}
+
+.portfolio-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.portfolio-info h4 a {
+  color: var(--text-white);
+  transition: color 0.3s ease;
+}
+
+.portfolio-info h4 a:hover {
+  color: var(--accent-color);
+}
+
+.portfolio-info p {
+  color: var(--accent-color);
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* Optional: Portfolio Filters (if needed later) */
+#portfolio-flters {
+  padding: 0;
+  margin: 0 auto 25px auto;
+  list-style: none;
+  text-align: center;
+}
+
+#portfolio-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0 3px 10px 3px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+  border: 1px solid var(--secondary-bg);
+}
+
+#portfolio-flters li:hover,
+#portfolio-flters li.filter-active {
+  color: var(--text-white);
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Portfolio Modal Section
+--------------------------------------------------------------*/
+/* Optional Modal Styling */
+.modal-content {
+  /* background-color: var(--secondary-bg); /* Already added inline */
+  /* color: var(--text-light); */ /* Already added inline */
+  border: 1px solid #444; /* Subtle border */
+}
+
+.modal-header, .modal-footer {
+ border-bottom-color: #444; 
+ border-top-color: #444;
+}
+
+.modal-title {
+  color: var(--text-white);
+}
+
+.modal-body img {
+  border-radius: 5px; 
+}
+
+.modal-body a {
+  color: var(--accent-color);
+}
+.modal-body a:hover {
+  color: var(--text-white);
+}
+
+/* Style the close button if needed (using btn-close-white already helps) */
+/* .modal-header .btn-close { ... } */
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact-info-box {
+  text-align: center;
+  padding: 20px 0;
+  background: var(--secondary-bg);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  height: 100%;
+  /* Equal height */
+  display: flex;
+  /* Use flexbox for alignment */
+  flex-direction: column;
+  /* Stack items vertically */
+  justify-content: center;
+  /* Center content vertically */
+}
+
+.contact-info-box i {
+  font-size: 24px;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.contact-info-box h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.contact-info-box p,
+.contact-info-box a {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.contact-info-box .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  color: var(--text-light);
+  line-height: 1;
+  padding: 8px 0;
+  margin: 0 5px;
+  /* Adjusted margin */
+  transition: 0.3s;
+}
+
+.contact-info-box .social-links a:hover {
+  color: var(--text-white);
+}
+
+.contact .php-email-form {
+  /* Placeholder class for potential backend integration */
+  padding: 30px;
+  background: var(--secondary-bg);
+  border-radius: 5px;
+}
+
+.contact .php-email-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea,
+.contact .php-email-form select {
+  border-radius: 4px;
+  box-shadow: none;
+  font-size: 14px;
+  background: var(--primary-bg);
+  /* Input background */
+  border: 1px solid #333;
+  color: var(--text-white);
+  padding: 10px 15px;
+  width: 100%;
+  /* Ensure inputs take full width */
+}
+
+/* Style placeholder text */
+.contact .php-email-form input::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: var(--accent-color);
+  opacity: 0.7;
+}
+
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus,
+.contact .php-email-form select:focus {
+  border-color: var(--accent-color);
+  background: var(--primary-bg);
+  color: var(--text-white);
+  outline: none;
+  /* Remove default focus outline */
+  box-shadow: none;
+  /* Remove default focus shadow */
+}
+
+.contact .php-email-form button[type="submit"],
+.contact .php-email-form button[type="button"] { /* Added type="button" */
+    background: var(--accent-color);
+    border: 0;
+    padding: 10px 30px;
+    color: var(--primary-bg);
+    transition: 0.4s;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer; /* Ensure pointer cursor */
+}
+
+.contact .php-email-form button[type="submit"]:hover,
+.contact .php-email-form button[type="button"]:hover { /* Added type="button" */
+    background: var(--text-white);
+}
+
+.contact .php-email-form .captcha-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  /* Add gap between code and input */
+}
+
+.contact .php-email-form .captcha-code {
+  background: var(--primary-bg);
+  border: 1px solid #333;
+  padding: 10px 15px;
+  /* margin-right: 15px; */
+  /* Replaced by gap */
+  border-radius: 4px;
+  font-family: monospace;
+  /* Make it look code-like */
+  letter-spacing: 2px;
+  color: var(--accent-color);
+  user-select: none;
+  /* Prevent text selection */
+  flex-shrink: 0;
+  /* Prevent captcha code from shrinking */
+}
+
+.contact .php-email-form .captcha-box input {
+  /* width: auto; */
+  /* Removed */
+  flex-grow: 1;
+  /* Allow input to take remaining space */
+}
+
+.contact .map-container {
+  margin-top: 30px;
+  height: 350px;
+  /* Adjust map height */
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.contact .map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+#page-transition-overlay.active {
+  opacity: 1; /* Make it visible */
+  pointer-events: auto; /* Block clicks when visible */
+}
+
+/*--------------------------------------------------------------
+# Responsive Design
+--------------------------------------------------------------*/
+@media (max-width: 992px) {
+  :root {
+    --sidebar-width: 0;
+    /* Hide sidebar */
+  }
+
+  .sidebar {
+    left: -300px;
+    /* Move off-screen */
+    /* Add styles for a toggle button if needed */
+  }
+
+  #main {
+    margin-left: 0;
+    padding: 20px;
+    /* Adjust padding for mobile */
+  }
+
+  #home {
+    text-align: center;
+    /* Center home text on mobile */
+    min-height: auto;
+    /* Adjust height */
+    padding-top: 80px;
+    /* Add space if header becomes fixed */
+    padding-bottom: 40px;
+  }
+
+  #home .profile-image-wrapper {
+    margin-top: 40px;
+    transform: none;
+    /* Disable 3D effect on mobile */
+    box-shadow: none;
+    max-width: 80%;
+    /* Adjust image size */
+  }
+
+  #home h1 {
+    font-size: 2.5rem;
+  }
+
+  .section-title h2 {
+    margin-bottom: 20px;
+  }
+
+  .contact .map-container {
+    height: 250px;
+  }
+
+  .contact-info-box {
+    margin-bottom: 20px;
+    /* Ensure spacing on medium screens */
+  }
+}
+
+/* Add more specific breakpoints and adjustments as needed */
+@media (max-width: 768px) {
+  .personal-details strong {
+    min-width: 60px;
+  }
+
+  .education-item .date,
+  .experience-item .date {
+    /* Keep position: absolute; if you want the date top-right on mobile */
+    position: absolute;
+    /* Or revert to static/block if you preferred stacking on mobile */
+    /* position: static; display: block; ... etc */
+  }
+
+  .fun-fact-box {
+    margin-bottom: 20px;
+  }
+
+  .contact-info-box {
+    margin-bottom: 20px;
+  }
+
+  #home h1 {
+    font-size: 2rem;
+    /* Further reduce heading size */
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title h2 {
+    font-size: 13px;
+  }
+
+  #home .btn-view-portfolio,
+  .btn-download-cv {
+    padding: 8px 25px;
+    font-size: 14px;
+  }
+
+  .contact .php-email-form .captcha-box {
+    flex-direction: column;
+    /* Stack captcha vertically */
+    align-items: stretch;
+    /* Stretch items */
+  }
+
+  .contact .php-email-form .captcha-box input {
+    width: 100%;
+    /* Make input full width when stacked */
+  }
+
+  .skill {
+    font-size: 13px;
+    /* Slightly smaller font on very small screens */
+    gap: 5px;
+    /* Reduce gap */
+  }
+}
